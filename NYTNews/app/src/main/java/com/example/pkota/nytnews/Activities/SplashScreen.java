@@ -3,16 +3,16 @@ package com.example.pkota.nytnews.Activities;
 /**
  * Created by pkota on 14-09-2016.
  */
+
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.support.v7.internal.view.ContextThemeWrapper;
 import android.util.Log;
 
 import com.example.pkota.nytnews.R;
@@ -51,19 +51,6 @@ public class SplashScreen extends AppCompatActivity {
         }
         else
         {
-                  /*  AlertDialog alertDialog = new AlertDialog.Builder(new ContextThemeWrapper(getApplicationContext(), R.style.myDialog)).create();
-
-                    alertDialog.setTitle("Info");
-                    alertDialog.setMessage("Internet not available, Cross check your internet connectivity and try again");
-                    alertDialog.setIcon(android.R.drawable.ic_dialog_alert);
-                    alertDialog.setButton(1,"OK", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            finish();
-
-                        }
-                    });
-
-                    alertDialog.show();*/
             AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
                     SplashScreen.this);
 
@@ -85,7 +72,6 @@ public class SplashScreen extends AppCompatActivity {
                         public void onClick(DialogInterface dialog,int id) {
                             // if this button is clicked, just close
                             // the dialog box and do nothing
-                            // startActivityForResult(new Intent(android.provider.Settings.ACTION_SETTINGS), 0);
                             Intent dialogIntent = new Intent(android.provider.Settings.ACTION_SETTINGS);
                             dialogIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                             startActivity(dialogIntent);

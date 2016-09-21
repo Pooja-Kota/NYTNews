@@ -3,14 +3,11 @@ package com.example.pkota.nytnews.Activities;
 /**
  * Created by pkota on 15-09-2016.
  */
-import android.Manifest;
-import android.app.Activity;
+
 import android.content.Context;
-import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Handler;
-import android.support.v4.app.ActivityCompat;
 import android.widget.ImageView;
 
 import com.example.pkota.nytnews.R;

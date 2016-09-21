@@ -3,9 +3,10 @@ package com.example.pkota.nytnews.Activities;
 /**
  * Created by pkota on 14-09-2016.
  */
+
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.webkit.WebView;
 
 import com.example.pkota.nytnews.R;
@@ -24,5 +25,6 @@ public class WebViewActivity extends AppCompatActivity {
         webView = (WebView) findViewById(R.id.webView );
         webView.getSettings().setJavaScriptEnabled(true);
         webView.loadUrl(url);
+        this.finish();
     }
 }

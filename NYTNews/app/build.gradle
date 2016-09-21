@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.pkota.nytnews"
-        minSdkVersion 19
+        minSdkVersion 16
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
@@ -16,7 +16,11 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+        debug {
+            debuggable true
+        }
     }
+
 }
 
 dependencies {

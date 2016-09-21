@@ -13,49 +13,95 @@
         card_view:cardCornerRadius="1dp">
 
         <RelativeLayout
+            android:id="@+id/relativeLayoutCard"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <ImageView
                 android:id="@+id/thumbnail"
-                android:layout_width="match_parent"
+                android:layout_width="160dp"
                 android:layout_height="160dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:clickable="true"
                 android:scaleType="fitXY"
-                android:layout_alignParentTop="true" />
+                android:layout_below="@+id/title"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true" />
 
             <TextView
                 android:id="@+id/title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/thumbnail"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
                 android:paddingTop="10dp"
                 android:textColor="#4c4c4c"
                 android:textSize="15dp"
-                android:layout_toStartOf="@+id/overflow" />
+                android:textStyle="bold"
+                android:layout_toEndOf="@+id/thumbnail"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true"
+                android:layout_toRightOf="@+id/thumbnail"
+                android:layout_alignParentLeft="true" />
 
             <TextView
-                android:id="@+id/count"
+                android:id="@+id/abstractDescription"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/title"
-                android:paddingBottom="5dp"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
-                android:textSize="12dp" />
-
-            <ImageView
-                android:id="@+id/overflow"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:paddingTop="10dp"
+                android:textColor="#4c4c4c"
+                android:ellipsize="end"
+                android:singleLine="false"
+                android:maxLines="3"
+                android:textSize="15dp"
+                android:layout_alignParentEnd="true"
+                android:layout_below="@+id/title"
+                android:layout_toEndOf="@+id/thumbnail"
+                android:layout_above="@+id/date"
                 android:layout_alignParentRight="true"
-                android:layout_below="@+id/thumbnail"
-                android:paddingRight="5dp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/share" />
+                android:layout_toRightOf="@+id/thumbnail" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/date"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="10dp"
+                android:textStyle="bold"
+                android:layout_above="@+id/relativeLayout"
+                android:layout_alignParentEnd="true"
+                android:layout_alignStart="@+id/abstractDescription"
+                android:layout_alignParentRight="true"
+                android:layout_alignLeft="@+id/abstractDescription" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/thumbnail"
+                android:layout_alignEnd="@+id/abstractDescription"
+                android:id="@+id/relativeLayout"
+                android:layout_alignRight="@+id/abstractDescription">
+                <ImageView
+                    android:id="@+id/shareIcon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:paddingRight="5dp"
+                    android:paddingLeft="5dp"
+                    android:paddingBottom="5dp"
+                    android:paddingTop="5dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/share"
+                     />
+                </RelativeLayout>
 
         </RelativeLayout>
 
