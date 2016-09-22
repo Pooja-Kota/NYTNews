@@ -74,7 +74,6 @@ public class MainActivity extends AppCompatActivity implements FragmentDrawer.Fr
 
             @Override
             public void onResponse(Call<News> call, Response<News> response) {
-                Log.d(TAG, "In onResponse" + response);
                 if((response.body() != null)) {
                     List<News> news = response.body().getResults();
                     dismissProgressDialog();
@@ -148,22 +147,18 @@ public class MainActivity extends AppCompatActivity implements FragmentDrawer.Fr
 
         switch(item.getItemId()){
             case R.id.All:
-                Toast.makeText(getBaseContext(), "You selected all", Toast.LENGTH_SHORT).show();
                 setRecycler(menuItemsSelection(drawerSelectedTitle,"all.json"));
                 break;
 
             case R.id.oneDay:
-                Toast.makeText(getBaseContext(), "You selected oneDay", Toast.LENGTH_SHORT).show();
                 setRecycler(menuItemsSelection(drawerSelectedTitle,"24.json"));
                 break;
 
             case R.id.twoDay:
-                Toast.makeText(getBaseContext(), "You selected twoDay", Toast.LENGTH_SHORT).show();
                 setRecycler(menuItemsSelection(drawerSelectedTitle,"48.json"));
                 break;
 
             case R.id.threeDay:
-                Toast.makeText(getBaseContext(), "You selected threeDay", Toast.LENGTH_SHORT).show();
                 setRecycler( menuItemsSelection(drawerSelectedTitle,"72.json"));
                 break;
             default:
