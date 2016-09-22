@@ -4,6 +4,7 @@ package com.example.pkota.nytnews.Activities;
  * Created by pkota on 13-09-2016.
  */
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -38,6 +39,7 @@ public class MainActivity extends AppCompatActivity implements FragmentDrawer.Fr
     private Toolbar mToolbar;
     private FragmentDrawer drawerFragment;
     private CustomList customListAdapter;
+    private ProgressDialog mProgressDialog;
 
 
     @Override
@@ -53,6 +55,7 @@ public class MainActivity extends AppCompatActivity implements FragmentDrawer.Fr
                 getSupportFragmentManager().findFragmentById(R.id.recycler_fragment);
         drawerFragment.setUp(R.id.recycler_fragment, (DrawerLayout) findViewById(R.id.drawer_layout), mToolbar);
         drawerFragment.setDrawerListener(this);
+        initProgressDialog();
         recyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
         recyclerView.setItemViewCacheSize(0);
         recyclerView.setHasFixedSize(true);
@@ -66,7 +69,7 @@ public class MainActivity extends AppCompatActivity implements FragmentDrawer.Fr
 
     public void setRecycler(Call<News> call)
     {
-
+        showProgressDialog();
         call.enqueue(new Callback<News>() {
 
             @Override
@@ -74,6 +77,7 @@ public class MainActivity extends AppCompatActivity implements FragmentDrawer.Fr
                 Log.d(TAG, "In onResponse" + response);
                 if((response.body() != null)) {
                     List<News> news = response.body().getResults();
+                    dismissProgressDialog();
                     customListAdapter = new CustomList(news, getApplicationContext());
                     recyclerView.setAdapter(customListAdapter);
                 }
@@ -176,5 +180,35 @@ public class MainActivity extends AppCompatActivity implements FragmentDrawer.Fr
         String pathParam = title+"/"+selectID;
         Log.d(TAG,pathParam);
            return apiService.getSpecificNews(title,selectID);
+    }
+
+    private void initProgressDialog() {
+
+        mProgressDialog = new ProgressDialog(this);
+        mProgressDialog.setMessage(getString(R.string.please_wait));
+        mProgressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        mProgressDialog.setCancelable(true);
+    }
+
+
+    public void showProgressDialog() {
+
+        try {
+            if (mProgressDialog == null)
+                initProgressDialog();
+            if (!mProgressDialog.isShowing())
+                mProgressDialog.show();
+        }
+        catch (Exception e) { }
+    }
+    public void dismissProgressDialog() {
+        try {
+            if (mProgressDialog != null && mProgressDialog.isShowing())
+                mProgressDialog.dismiss();
+        } catch (Exception e) {
+
+        } finally {
+            this.mProgressDialog = null;
+        }
     }
 }
