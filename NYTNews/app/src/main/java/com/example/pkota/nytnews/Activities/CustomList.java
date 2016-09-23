@@ -35,9 +35,13 @@ public class CustomList  extends RecyclerView.Adapter<CustomList.MyViewHolder> {
     //Animation
     Animation animFadeOut;
 
-    public CustomList(List<News> newsDataSet, Context context) {
-        this.newsDataSet = newsDataSet;
+    public CustomList(Context context) {
         this.context = context;
+    }
+
+    public void setNewsDataSet(List<News> newsDataSet) {
+        this.newsDataSet = newsDataSet;
+        notifyDataSetChanged();
     }
 
 

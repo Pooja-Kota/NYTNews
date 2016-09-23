@@ -62,13 +62,15 @@ public class MainActivity extends AppCompatActivity implements FragmentDrawer.Fr
         layoutManager = new LinearLayoutManager(this);
         layoutManager.scrollToPosition(0);
         recyclerView.setLayoutManager(layoutManager);
-
+        customListAdapter =  new CustomList(getApplicationContext());
+        recyclerView.setAdapter(customListAdapter);
         // display the first navigation drawer view on app launch
         displayView(0);
     }
 
     public void setRecycler(Call<News> call)
     {
+        recyclerView.setVisibility(View.GONE);
         showProgressDialog();
         call.enqueue(new Callback<News>() {
 
@@ -77,8 +79,11 @@ public class MainActivity extends AppCompatActivity implements FragmentDrawer.Fr
                 if((response.body() != null)) {
                     List<News> news = response.body().getResults();
                     dismissProgressDialog();
-                    customListAdapter = new CustomList(news, getApplicationContext());
-                    recyclerView.setAdapter(customListAdapter);
+
+                    if(customListAdapter != null) {
+                        customListAdapter.setNewsDataSet(news);
+                        recyclerView.setVisibility(View.VISIBLE);
+                    }
                 }
             }
 
