@@ -1,9 +1,8 @@
 package com.example.pkota.nytnews.utils;
 
-import java.util.Date;
-import java.util.List;
-
 import com.google.gson.annotations.SerializedName;
+
+import java.util.List;
 
 /**
  * Created by pkota on 07-09-2016.
@@ -12,6 +11,9 @@ public class News {
 
     @SerializedName("title")
     private String title;
+
+    @SerializedName("abstract")
+    private String abstractDescription;
 
     @SerializedName("published_date")
     private String date;
@@ -29,12 +31,23 @@ public class News {
     private List<News> results;
 
 
-    public News(String title, String date, String url, String thumbnail, String category) {
+
+    public News(String title, String date, String url, String thumbnail, String category, String abstractDescription, List<News> results) {
         this.title = title;
         this.date = date;
         this.url = url;
         this.thumbnail = thumbnail;
         this.category = category;
+        this.results = results;
+        this.abstractDescription = abstractDescription;
+    }
+
+    public String getAbstractDescription() {
+        return abstractDescription;
+    }
+
+    public void setAbstractDescription(String abstractDescription) {
+        this.abstractDescription = abstractDescription;
     }
 
     public List<News> getResults() {

@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.pkota.nytnews"
-        minSdkVersion 19
+        minSdkVersion 16
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
@@ -16,7 +16,11 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+        debug {
+            debuggable true
+        }
     }
+
 }
 
 dependencies {
@@ -30,6 +34,11 @@ dependencies {
     compile 'com.squareup.retrofit2:converter-gson:2.0.2'
     compile 'com.android.support:cardview-v7:23.0.+'
 
+    //picasso image downloader
+    compile 'com.squareup.picasso:picasso:2.5.2'
+
     // RecyclerView
     compile 'com.android.support:recyclerview-v7:23.0.+'
+
+
 }
